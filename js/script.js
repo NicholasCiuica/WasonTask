@@ -2,7 +2,6 @@ const cardContainer = document.querySelector("#card-container");
 
 //contains card-inners because those contain the card-fronts
 //and card-backs and because transformations are to be done on 
-
 const cardList = [];
 
 function setCards() {
@@ -66,3 +65,17 @@ document.querySelector("#unflip-button").onclick = () => {
 
 //reset the cards
 document.querySelector("#reset-button").onclick = setCards;
+
+//different Wason Task variation options
+
+const ruleName = document.querySelector("#rule-name");
+const ruleDefinition = document.querySelector("#rule-definition");
+const infoBox = document.querySelector("#info-text");
+
+const originalOption = document.querySelector("#original-option");
+originalOption.onclick = () => {
+  ruleName.textContent = optionText.original.ruleName;
+  ruleDefinition.textContent = optionText.original.ruleDefinition;
+  infoBox.textContent = optionText.original.infoText;
+}
+originalOption.click();

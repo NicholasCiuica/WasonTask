@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="resources/style.css">
   <title>Wason Selection</title>
 </head>
 
@@ -17,34 +17,26 @@
     <div id="content-container">
       <div id="centered-content-container">
 
-        <p>
-          If a card has an even number on one face, it must have a
-          vowel on the other face. Which cards do you need to flip to
-          test this claim?
-        </p>
+        <div id="rule-text">
+          <strong><em><span id="rule-name"></span></em></strong>:
+          <span id="rule-definition"></span>
+        </div>
 
         <div id="card-container"></div>
 
-        <div class="button-bar">
+        <div class="button-bar" id="actions-button-bar">
           <div class="button" id="flip-button">Flip</div>
           <div class="button" id="unflip-button">Unflip</div>
           <div class="button" id="reset-button">Reset</div>
         </div>
 
-        <div id="info-box">
-          <div class="button-bar">
-            <div class="button" id="original-button">Original</div>
-            <div class="button">2</div>
-            <div class="button">3</div>
-          </div>
-
-          <p>
-            This is where info about the Wason Selection task will
-            be displayed. There will be multiple options between
-            different types of these selection tasks. I should add 
-            a scrollbar in case these writings get too long
-          </p>
+        <div class="button-bar" id="options-button-bar">
+          <div class="button" id="original-option">Original</div>
+          <div class="button" id="second-option">2</div>
+          <div class="button" id="third-option">3</div>
         </div>
+        
+        <div id="info-text"></div>
 
       </div>
     </div>
@@ -54,8 +46,10 @@
     </footer>
 
   </div>
-  <script src="util.js"></script>
-  <script src="script.js"></script>
+
+  <script src="js/text.js"></script>
+  <script src="js/util.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
