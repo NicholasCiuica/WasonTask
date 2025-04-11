@@ -63,7 +63,7 @@ function getNormalWasonValues() {
   return cardValues;
 }
 
-function getAlcoholWasonValues() {
+function getBeerWasonValues() {
   const cardValues = [];
 
   cardValues.push({

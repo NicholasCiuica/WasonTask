@@ -1,4 +1,7 @@
 # WasonTask
+COGS-2120 Introduction to Cognitive Science  
+Wason Selection Task and Variations  
+Nicholas Ciuica
 
 Sources used: 
 

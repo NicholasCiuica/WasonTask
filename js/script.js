@@ -56,7 +56,7 @@ function setCards(variation = 0) {
       cardContainer.style.fontSize = "3rem";
       break;
     case 1:
-      cardValues = getAlcoholWasonValues();
+      cardValues = getBeerWasonValues();
       cardContainer.style.fontSize = "2rem";
       break;
   }
