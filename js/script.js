@@ -3,8 +3,22 @@ const cardContainer = document.querySelector("#card-container");
 //contains card-inners because those contain the card-fronts
 //and card-backs and because transformations are to be done on 
 const cardList = [];
+let currentVariation = 0;
 
-function setCards() {
+const ruleName = document.querySelector("#rule-name");
+const ruleDefinition = document.querySelector("#rule-definition");
+const infoBox = document.querySelector("#info-text");
+
+setVariation(0);
+
+function setVariation(variation = 0) {
+  setCards(variation);
+  ruleName.textContent = optionText.options[variation].ruleName;
+  ruleDefinition.textContent = optionText.options[variation].ruleDefinition;
+  infoBox.textContent = optionText.options[variation].infoText;
+}
+
+function setCards(variation = 0) {
   //delete any old cards
   cardList.length = 0;
   cardContainer.innerHTML = "";
@@ -35,7 +49,18 @@ function setCards() {
   }
   
   //give the cards their values
-  const cardValues = getNormalWasonValues();
+  let cardValues;
+  switch(variation) {
+    case 0:
+      cardValues = getNormalWasonValues();
+      cardContainer.style.fontSize = "3rem";
+      break;
+    case 1:
+      cardValues = getAlcoholWasonValues();
+      cardContainer.style.fontSize = "2rem";
+      break;
+  }
+
   for(let i = 0; i < 4; i++) {
     cardList[i].querySelector(".card-front").textContent = cardValues[i].front;
     cardList[i].querySelector(".card-back").textContent = cardValues[i].back;
@@ -44,7 +69,6 @@ function setCards() {
     }
   }
 }
-setCards();
 
 //button that flips selected cards
 document.querySelector("#flip-button").onclick = () => {
@@ -67,15 +91,18 @@ document.querySelector("#unflip-button").onclick = () => {
 document.querySelector("#reset-button").onclick = setCards;
 
 //different Wason Task variation options
-
-const ruleName = document.querySelector("#rule-name");
-const ruleDefinition = document.querySelector("#rule-definition");
-const infoBox = document.querySelector("#info-text");
-
-const originalOption = document.querySelector("#original-option");
-originalOption.onclick = () => {
-  ruleName.textContent = optionText.original.ruleName;
-  ruleDefinition.textContent = optionText.original.ruleDefinition;
-  infoBox.textContent = optionText.original.infoText;
+const options = document.querySelectorAll('.option');
+for(const option of options) {
+  option.onclick = function() {
+    const id = this.id;
+    const variation = parseInt(id.substring(id.indexOf("-") + 1));
+    console.log(id.substring(id.indexOf("-") + 1));
+    setVariation(variation);
+    //underline just the most recently clicked option
+    for(const o of options) {
+      o.classList.remove("current");
+    }
+    this.classList.add("current");
+  }
 }
-originalOption.click();
+options[0].classList.add("current");

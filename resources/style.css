@@ -142,6 +142,11 @@ footer {
 
 /* Info Box Styles */
 
+.option.current {
+  text-decoration: underline 2px;
+  font-weight: bold;
+}
+
 #info-text {
   background-color: beige;
   border-bottom-left-radius: 2rem;
@@ -198,7 +203,6 @@ footer {
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
   border-radius: inherit;
-  font-size: 3rem;
   font-weight: bold;
   line-height: 8rem;
 }

@@ -62,3 +62,31 @@ function getNormalWasonValues() {
   shuffle(cardValues);
   return cardValues;
 }
+
+function getAlcoholWasonValues() {
+  const cardValues = [];
+
+  cardValues.push({
+    "front": "Coke",
+    "back": "18",
+    "relevant": false
+  });
+  cardValues.push({
+    "front": "Beer",
+    "back": "17",
+    "relevant": true
+  });
+  cardValues.push({
+    "front": "16",
+    "back": "Water",
+    "relevant": true
+  });
+  cardValues.push({
+    "front": "22",
+    "back": "Water",
+    "relevant": false
+  });
+
+  shuffle(cardValues);
+  return cardValues;
+}
