@@ -29,7 +29,42 @@ function shuffle(array) {
   }
 }
 
-function getNormalWasonValues() {
+//Wason, P. C. (1968). Reasoning about a Rule. Quarterly Journal of Experimental Psychology, 20(3), 273–281. https://doi.org/10.1080/14640746808400161
+//P(Q), Q(not-P), not-P(not-Q), not-Q(P)
+//"If there is a D on one side of any card, then there is a 3 on its other side."
+function getOriginalWasonValues() {
+  const cardValues = [];
+
+  //P(Q)
+  cardValues.push({
+    "front": "D",
+    "back": "3",
+    "relevant": true
+  });
+  // Q(not-P)
+  cardValues.push({
+    "front": "3",
+    "back": "K",
+    "relevant": false
+  });
+  //not-P(not-Q)
+  cardValues.push({
+    "front": "B",
+    "back": "5",
+    "relevant": false
+  });
+  //not-Q(P)
+  cardValues.push({
+    "front": "7",
+    "back": "D",
+    "relevant": true
+  });
+
+  shuffle(cardValues);
+  return cardValues;
+}
+
+function getAbstractWasonValues() {
   const cardValues = [];
   shuffle(evenNumbers);
   shuffle(oddNumbers);
@@ -63,29 +98,67 @@ function getNormalWasonValues() {
   return cardValues;
 }
 
+//"Every time I go to Miami I travel by car."
+function getTransitWasonValues() {
+  const cardValues = [];
+
+  //P(Q)
+  cardValues.push({
+    "front": "Miami",
+    "back": "Car",
+    "relevant": true
+  });
+  // Q(not-P)
+  cardValues.push({
+    "front": "Car",
+    "back": "Atlanta",
+    "relevant": false
+  });
+  //not-P(not-Q)
+  cardValues.push({
+    "front": "Atlanta",
+    "back": "Plane",
+    "relevant": false
+  });
+  //not-Q(P)
+  cardValues.push({
+    "front": "Plane",
+    "back": "Miami",
+    "relevant": true
+  });
+
+  shuffle(cardValues);
+  return cardValues;
+}
+
+//"If a person is drinking beer, they must be [21] or older."
 function getBeerWasonValues() {
   const cardValues = [];
 
-  cardValues.push({
-    "front": "Coke",
-    "back": "18",
-    "relevant": false
-  });
+  //P(Q)
   cardValues.push({
     "front": "Beer",
-    "back": "17",
+    "back": "22",
     "relevant": true
   });
+  // Q(not-P)
   cardValues.push({
-    "front": "16",
-    "back": "Water",
-    "relevant": true
-  });
-  cardValues.push({
-    "front": "22",
-    "back": "Water",
+    "front": "23",
+    "back": "Coke",
     "relevant": false
   });
+  //not-P(not-Q)
+  cardValues.push({
+    "front": "Coke",
+    "back": "17",
+    "relevant": false
+  });
+  //not-Q(P)
+  cardValues.push({
+    "front": "16",
+    "back": "Beer",
+    "relevant": true
+  }); 
 
   shuffle(cardValues);
   return cardValues;

@@ -1,81 +1,101 @@
 const cardContainer = document.querySelector("#card-container");
-
-//contains card-inners because those contain the card-fronts
-//and card-backs and because transformations are to be done on 
-const cardList = [];
-let currentVariation = 0;
-
 const ruleName = document.querySelector("#rule-name");
 const ruleDefinition = document.querySelector("#rule-definition");
 const infoBox = document.querySelector("#info-text");
 
-setVariation(0);
+class CardManager {
+  constructor(cardContainer, ruleName, ruleDefinition, infoBox, variation = 0) {
+    this.cardContainer = cardContainer;
+    this.ruleName = ruleName;
+    this.ruleDefinition = ruleDefinition;
+    this.infoBox = infoBox;
+    //will contain card-inners
+    this.cardList = [];
+    this.setVariation(variation);
+  }
 
-function setVariation(variation = 0) {
-  setCards(variation);
-  ruleName.textContent = optionText.options[variation].ruleName;
-  ruleDefinition.textContent = optionText.options[variation].ruleDefinition;
-  infoBox.textContent = optionText.options[variation].infoText;
+  setVariation(variation) {
+    this.variation = variation;
+    this.setCards();
+    this.setText();
+  }
+
+  setCards() {
+    //delete any old cards
+    this.cardList.length = 0;
+    this.cardContainer.innerHTML = "";
+    //create the four flippable card objects
+    for(let i = 0; i < 4; i++) {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      this.cardContainer.appendChild(card);
+    
+      const cardInner = document.createElement("div");
+      cardInner.classList.add("card-inner");
+      card.appendChild(cardInner);
+      this.cardList.push(cardInner);
+    
+      cardInner.onclick = function() {
+        this.classList.toggle("clicked");
+      }
+    
+      const cardFront = document.createElement("div");
+      cardFront.classList.add("card-front");
+      cardFront.textContent = "A";
+      cardInner.appendChild(cardFront);
+    
+      const cardBack = document.createElement("div");
+      cardBack.classList.add("card-back");
+      cardBack.textContent = "B";
+      cardInner.appendChild(cardBack);
+    }
+    
+    //give the cards their values
+    let cardValues;
+    switch(this.variation) {
+      case 0:
+        cardValues = getOriginalWasonValues();
+        this.cardContainer.style.fontSize = "3rem";
+        break;
+      case 1:
+        cardValues = getAbstractWasonValues();
+        this.cardContainer.style.fontSize = "3rem";
+        break;
+      case 2:
+        cardValues = getTransitWasonValues();
+        this.cardContainer.style.fontSize = "1.4rem";
+        break;
+      case 3:
+        cardValues = getBeerWasonValues();
+        this.cardContainer.style.fontSize = "2rem";
+        break;
+    }
+
+    for(let i = 0; i < 4; i++) {
+      this.cardList[i].querySelector(".card-front").textContent = cardValues[i].front;
+      this.cardList[i].querySelector(".card-back").textContent = cardValues[i].back;
+      if(cardValues[i].relevant === true) {
+        this.cardList[i].classList.add("relevant");
+      }
+    }
+  }
+
+  setText() {
+    this.ruleName.textContent = optionText.options[this.variation].ruleName;
+    this.ruleDefinition.textContent = optionText.options[this.variation].ruleDefinition;
+    this.infoBox.textContent = optionText.options[this.variation].infoText;
+  }
+
 }
 
-function setCards(variation = 0) {
-  //delete any old cards
-  cardList.length = 0;
-  cardContainer.innerHTML = "";
-  //create the four flippable card objects
-  for(let i = 0; i < 4; i++) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    cardContainer.appendChild(card);
-  
-    const cardInner = document.createElement("div");
-    cardInner.classList.add("card-inner");
-    card.appendChild(cardInner);
-    cardList.push(cardInner);
-  
-    cardInner.onclick = function() {
-      this.classList.toggle("clicked");
-    }
-  
-    const cardFront = document.createElement("div");
-    cardFront.classList.add("card-front");
-    cardFront.textContent = "A";
-    cardInner.appendChild(cardFront);
-  
-    const cardBack = document.createElement("div");
-    cardBack.classList.add("card-back");
-    cardBack.textContent = "B";
-    cardInner.appendChild(cardBack);
-  }
-  
-  //give the cards their values
-  let cardValues;
-  switch(variation) {
-    case 0:
-      cardValues = getNormalWasonValues();
-      cardContainer.style.fontSize = "3rem";
-      break;
-    case 1:
-      cardValues = getBeerWasonValues();
-      cardContainer.style.fontSize = "2rem";
-      break;
-  }
-
-  for(let i = 0; i < 4; i++) {
-    cardList[i].querySelector(".card-front").textContent = cardValues[i].front;
-    cardList[i].querySelector(".card-back").textContent = cardValues[i].back;
-    if(cardValues[i].relevant === true) {
-      cardList[i].classList.add("relevant");
-    }
-  }
-}
+const cm = new CardManager(cardContainer, ruleName, ruleDefinition, infoBox);
 
 //button that flips selected cards
 document.querySelector("#flip-button").onclick = () => {
   for(let i = 0; i < 4; i++) {
-    if(cardList[i].classList.contains("clicked")) {
-      cardList[i].classList.remove("clicked");
-      cardList[i].classList.add("flipped");
+    if(cm.cardList[i].classList.contains("clicked")) {
+      cm.cardList[i].classList.remove("clicked");
+      cm.cardList[i].classList.add("flipped");
     }
   }
 };
@@ -83,12 +103,14 @@ document.querySelector("#flip-button").onclick = () => {
 //unflip all flipped buttons
 document.querySelector("#unflip-button").onclick = () => {
   for(let i = 0; i < 4; i++) {
-    cardList[i].classList.remove("flipped");
+    cm.cardList[i].classList.remove("flipped");
   }
 };
 
 //reset the cards
-document.querySelector("#reset-button").onclick = setCards;
+document.querySelector("#reset-button").onclick = () => {
+  cm.setCards();
+};
 
 //different Wason Task variation options
 const options = document.querySelectorAll('.option');
@@ -97,7 +119,7 @@ for(const option of options) {
     const id = this.id;
     const variation = parseInt(id.substring(id.indexOf("-") + 1));
     console.log(id.substring(id.indexOf("-") + 1));
-    setVariation(variation);
+    cm.setVariation(variation);
     //underline just the most recently clicked option
     for(const o of options) {
       o.classList.remove("current");
