@@ -3,8 +3,7 @@ const optionText = {
 
     {
       ruleName: "Wason's Original Rule",
-      ruleDefinition: `\"something about ds and 3s. 
-      Which cards do you need to flip to test this claim?\"`,
+      ruleDefinition: `\"If there is a D on one side of any card, then there is a 3 on its other side.\"`,
       infoText: `This is where info about the Wason Selection task will be displayed. 
       There will be multiple options between different types of these selection tasks. 
       I should add a scrollbar in case these writings get too long. 
@@ -14,8 +13,7 @@ const optionText = {
 
     {
       ruleName: "Abstract Rule",
-      ruleDefinition: `\"If a card has an even number on one face, it must have a vowel on the other face. 
-      Which cards do you need to flip to test this claim?\"`,
+      ruleDefinition: `\"If a card has an even number on one face, it must have a vowel on the other face.\"`,
       infoText: `This is where info about the Wason Selection task will be displayed. 
       There will be multiple options between different types of these selection tasks. 
       I should add a scrollbar in case these writings get too long. 
@@ -25,15 +23,13 @@ const optionText = {
 
     {
       ruleName: "Griggs and Cox's Transit Rule",
-      ruleDefinition: `\"Every time I go to Miami I travel by car.\"
-      [Which cards do you need to flip to test this claim?]`,
+      ruleDefinition: `\"Every time I go to Miami I travel by car.\"`,
       infoText: "dffdfdffd"
     },
 
     {
       ruleName: "Griggs and Cox's Beer Rule",
-      ruleDefinition: `\"If a person is drinking beer, they must be [21] or older.\"
-      [Which cards do you need to flip to test this claim?]`,
+      ruleDefinition: `\"If a person is drinking beer, they must be [21] or older.\"`,
       infoText: `The rule for Grigg's and Cox's third experiment discussed in their paper
       was "If a person is drinking beer, then the person must be over 19 years of age." This
       thematic rule was designed to test the memory-cueing

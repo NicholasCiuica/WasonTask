@@ -56,12 +56,19 @@ footer {
   padding-top: 1rem;
 }
 
-/* Rule Text Styles */
+/* Text Styles */
 
 #rule-text {
   text-align: justify;
   font-size: 1.4rem;
   line-height: 1.05;
+}
+
+#task-text {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9em;
+  margin-top: 0.5rem;
 }
 
 /* Content Container Styles */
