@@ -68,7 +68,7 @@ footer {
   text-align: center;
   font-style: italic;
   font-size: 0.9em;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 /* Content Container Styles */
@@ -91,7 +91,6 @@ footer {
   margin-left: auto;
   margin-right: auto;
   background-color: palegoldenrod;
-
 }
 
 /* Card Container Styles */
@@ -166,14 +165,24 @@ footer {
   margin-bottom: 1rem;
 }
 
-#sources-text {
+#sources-container {
   background-color: white;
   font-size: 0.9rem;
   padding: 0.5rem;
   margin-top: 1rem;
+  overflow-wrap: break-word;
+  line-height: 2;
 }
 
-#sources-text.hidden {
+/* Hanging Indent Effect */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent */
+
+#sources-container .source {
+  text-indent: -2em;
+  margin-left: 2em;
+}
+
+#sources-container.hidden {
   display: none;
 }
 

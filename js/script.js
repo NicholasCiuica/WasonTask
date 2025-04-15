@@ -2,15 +2,15 @@ const cardContainer = document.querySelector("#card-container");
 const ruleName = document.querySelector("#rule-name");
 const ruleDefinition = document.querySelector("#rule-definition");
 const infoText = document.querySelector("#info-text");
-const sourcesText = document.querySelector("#sources-text");
+const sourcesContainer = document.querySelector("#sources-container");
 
 class CardManager {
-  constructor(cardContainer, ruleName, ruleDefinition, infoText, sourcesText, variation = 0) {
+  constructor(cardContainer, ruleName, ruleDefinition, infoText, sourcesContainer, variation = 0) {
     this.cardContainer = cardContainer;
     this.ruleName = ruleName;
     this.ruleDefinition = ruleDefinition;
     this.infoText = infoText;
-    this.sourcesText = sourcesText;
+    this.sourcesContainer = sourcesContainer;
     //will contain card-inners
     this.cardList = [];
     this.setVariation(variation);
@@ -86,13 +86,20 @@ class CardManager {
     this.ruleName.textContent = optionText.options[this.variation].ruleName;
     this.ruleDefinition.textContent = optionText.options[this.variation].ruleDefinition;
     this.infoText.textContent = optionText.options[this.variation].infoText;
-    this.sourcesText.textContent = optionText.options[this.variation].sourcesText;
+
+    this.sourcesContainer.innerHTML = "";
+    for(const sourceText of optionText.options[this.variation].sources) {
+      const source = document.createElement("p");
+      source.classList.add("source");
+      source.textContent = sourceText;
+      this.sourcesContainer.appendChild(source);
+    }
   }
 
 }
 
 
-const cm = new CardManager(cardContainer, ruleName, ruleDefinition, infoText, sourcesText);
+const cm = new CardManager(cardContainer, ruleName, ruleDefinition, infoText, sourcesContainer);
 
 //button that flips selected cards
 document.querySelector("#flip-button").onclick = () => {
@@ -135,11 +142,11 @@ options[0].classList.add("current");
 
 //button to toggle sources
 document.querySelector("#sources-button").onclick = function() {
-  if(sourcesText.classList.contains("hidden")) {
-    sourcesText.classList.remove("hidden");
+  if(sourcesContainer.classList.contains("hidden")) {
+    sourcesContainer.classList.remove("hidden");
     this.textContent = "Hide Sources";
   } else {
-    sourcesText.classList.add("hidden");
+    sourcesContainer.classList.add("hidden");
     this.textContent = "Show Sources";
   }
 }
