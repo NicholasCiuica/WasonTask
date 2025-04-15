@@ -35,8 +35,7 @@ header {
   background-color: burlywood;
   left: 0;
   right: 0;
-  height: 7rem;
-  padding-top: 1.5rem;
+  padding: 1.5rem;
 }
 
 header h1 {
@@ -44,7 +43,7 @@ header h1 {
 }
 
 header a {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
 }
 
 /* Footer Styles */
