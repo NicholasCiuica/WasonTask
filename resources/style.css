@@ -216,13 +216,13 @@ footer {
 }
 
 .card-back {
-  background-color: red;
+  background-color: lightcoral;
   color: white;
   transform: rotateY(180deg);
 }
 
 .card-inner.relevant .card-back {
-  background-color: lime;
+  background-color: lightgreen;
   color: white;
 }
 

@@ -64,6 +64,7 @@ function getOriginalWasonValues() {
   return cardValues;
 }
 
+//"If there is a vowel on one side of a card, then there is an even number on the other side."
 function getAbstractWasonValues() {
   const cardValues = [];
   shuffle(evenNumbers);
@@ -73,25 +74,30 @@ function getAbstractWasonValues() {
   shuffle(consonants);
   shuffle(letters);
 
+  //randomizing the back faces completely
+  //P
   cardValues.push({
     "front": vowels[0],
     "back": numbers[0],
+    "relevant": true
+  });
+  // Q
+  cardValues.push({
+    "front": evenNumbers[0],
+    "back": letters[0],
     "relevant": false
   });
+  //not-P
   cardValues.push({
     "front": consonants[0],
     "back": numbers[1],
-    "relevant": true
-  });
-  cardValues.push({
-    "front": evenNumbers[1],
-    "back": letters[0],
-    "relevant": true
-  });
-  cardValues.push({
-    "front": oddNumbers[1],
-    "back": letters[1],
     "relevant": false
+  });
+  //not-Q
+  cardValues.push({
+    "front": oddNumbers[0],
+    "back": letters[1],
+    "relevant": true
   });
 
   shuffle(cardValues);
