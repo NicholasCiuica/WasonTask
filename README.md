@@ -5,7 +5,15 @@ by Nicholas Ciuica
 
 Webpage with a demo of the Wason Selection Task and its variations, as well as some information about each.
 
-My research on WST is included in the repository as a .docx file.
+My research on WST is also included in the repository.
+
+## To Access:
+
+- Use the following link to access the page hosted through GitHub: https://nicholasciuica.github.io/WasonTask/
+
+- If this doesn't work for you, you can simply download the repository files and run the index.html file in your browser of choice
+
+##
 
 Sources used while programming: 
 > https://www.w3schools.com/howto/howto_css_flip_card.asp  
