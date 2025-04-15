@@ -5,13 +5,13 @@ by Nicholas Ciuica
 
 Webpage with a demo of the Wason Selection Task and its variations, as well as some information about each.
 
-My research on WST is also included in the repository.
+My research on WST is also included in the repository and is accessible through the demo.
 
 ## To Access:
 
 - Use the following link to access the page hosted through GitHub: https://nicholasciuica.github.io/WasonTask/
 
-- If this doesn't work for you, you can simply download the repository files and run the index.html file in your browser of choice
+- If this doesn't work for you, you can simply download the repository as a zip, unzip the files, and run the index.html file in your browser of choice
 
 ##
 
