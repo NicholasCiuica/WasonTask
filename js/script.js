@@ -1,14 +1,16 @@
 const cardContainer = document.querySelector("#card-container");
 const ruleName = document.querySelector("#rule-name");
 const ruleDefinition = document.querySelector("#rule-definition");
-const infoBox = document.querySelector("#info-text");
+const infoText = document.querySelector("#info-text");
+const sourcesText = document.querySelector("#sources-text");
 
 class CardManager {
-  constructor(cardContainer, ruleName, ruleDefinition, infoBox, variation = 0) {
+  constructor(cardContainer, ruleName, ruleDefinition, infoText, sourcesText, variation = 0) {
     this.cardContainer = cardContainer;
     this.ruleName = ruleName;
     this.ruleDefinition = ruleDefinition;
-    this.infoBox = infoBox;
+    this.infoText = infoText;
+    this.sourcesText = sourcesText;
     //will contain card-inners
     this.cardList = [];
     this.setVariation(variation);
@@ -83,12 +85,14 @@ class CardManager {
   setText() {
     this.ruleName.textContent = optionText.options[this.variation].ruleName;
     this.ruleDefinition.textContent = optionText.options[this.variation].ruleDefinition;
-    this.infoBox.textContent = optionText.options[this.variation].infoText;
+    this.infoText.textContent = optionText.options[this.variation].infoText;
+    this.sourcesText.textContent = optionText.options[this.variation].sourcesText;
   }
 
 }
 
-const cm = new CardManager(cardContainer, ruleName, ruleDefinition, infoBox);
+
+const cm = new CardManager(cardContainer, ruleName, ruleDefinition, infoText, sourcesText);
 
 //button that flips selected cards
 document.querySelector("#flip-button").onclick = () => {
@@ -128,3 +132,14 @@ for(const option of options) {
   }
 }
 options[0].classList.add("current");
+
+//button to toggle sources
+document.querySelector("#sources-button").onclick = function() {
+  if(sourcesText.classList.contains("hidden")) {
+    sourcesText.classList.remove("hidden");
+    this.textContent = "Hide Sources";
+  } else {
+    sourcesText.classList.add("hidden");
+    this.textContent = "Show Sources";
+  }
+}

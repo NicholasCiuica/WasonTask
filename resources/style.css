@@ -154,12 +154,27 @@ footer {
   font-weight: bold;
 }
 
-#info-text {
+#info-box {
   background-color: beige;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
   padding: 1rem 2rem;
   font-size: 1.2rem;
+}
+
+#info-text {
+  margin-bottom: 1rem;
+}
+
+#sources-text {
+  background-color: white;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+#sources-text.hidden {
+  display: none;
 }
 
 /* Card Styles */
@@ -198,7 +213,7 @@ footer {
 }
 
 .card-inner.relevant .card-back {
-  background-color: dodgerblue;
+  background-color: lime;
   color: white;
 }
 

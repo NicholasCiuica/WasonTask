@@ -8,7 +8,8 @@ const optionText = {
       There will be multiple options between different types of these selection tasks. 
       I should add a scrollbar in case these writings get too long. 
       I've just added the scrollbar and am checking the scroll functionality now by adding a lot of text. 
-      I will probably have to set a height for this box.`
+      I will probably have to set a height for this box.`,
+      sourcesText: `test1`
     },
 
     {
@@ -18,13 +19,15 @@ const optionText = {
       There will be multiple options between different types of these selection tasks. 
       I should add a scrollbar in case these writings get too long. 
       I've just added the scrollbar and am checking the scroll functionality now by adding a lot of text. 
-      I will probably have to set a height for this box.`
+      I will probably have to set a height for this box.`,
+      sourcesText: `test`
     },
 
     {
       ruleName: "Griggs and Cox's Transit Rule",
       ruleDefinition: `\"Every time I go to Miami I travel by car.\"`,
-      infoText: "dffdfdffd"
+      infoText: "dffdfdffd",
+      sourcesText: `test`
     },
 
     {
@@ -41,7 +44,8 @@ const optionText = {
       \nParticipants performed significantly better on this task than the original abstract task,
       and no transfer effect was recorded between these two tasks (e.i. doing the abstract
       WST after being given this thematic/deontic task did not improve performance on the abstract
-      task).`
+      task).`,
+      sourcesText: `test`
     } 
     
   ]
